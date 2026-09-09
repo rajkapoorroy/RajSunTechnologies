@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YourGarment</title>
+<title>RajSun Technologies</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -64,18 +64,515 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
 
 #dashboardPage,#billingPage,#salesPage,#stockPage,#purchasePage,#productsPage,#suppliersPage{display:none}
 
+/* ==============================
+   PREMIUM LOGIN DESIGN
+   ============================== */
+
+.login-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:35px 20px;
+    background:
+        radial-gradient(circle at top left, #dbeafe 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #cffafe 0%, transparent 35%),
+        linear-gradient(135deg,#0f172a,#1d4ed8,#0891b2);
+}
+
+.login-container{
+    width:100%;
+    max-width:1050px;
+    min-height:600px;
+    background:rgba(255,255,255,0.97);
+    border-radius:26px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    box-shadow:0 30px 80px rgba(0,0,0,0.28);
+    border:1px solid rgba(255,255,255,0.5);
+}
+
+.brand{
+    padding:60px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:
+        linear-gradient(145deg,#020617,#1e3a8a 55%,#0891b2);
+}
+
+.brand h1{
+    font-size:48px;
+    margin:0 0 8px;
+    letter-spacing:-1px;
+}
+
+.brand h1 span{
+    color:#67e8f9;
+}
+
+.brand p{
+    font-size:16px;
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.features{
+    margin-top:25px;
+    line-height:2.2;
+    color:#e0f2fe;
+    font-size:15px;
+}
+
+.login-box{
+    padding:55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.login-box h2{
+    font-size:32px;
+    margin:0;
+    color:#0f172a;
+}
+
+.subtitle{
+    color:#64748b;
+    margin:10px 0 25px;
+}
+
+.login-box input{
+    background:#f8fafc;
+    border:1px solid #dbe2ea;
+    padding:13px 14px;
+    border-radius:10px;
+    transition:0.2s;
+}
+
+.login-box input:focus{
+    background:white;
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37,99,235,0.10);
+}
+
+.login-btn{
+    width:100%;
+    margin-top:22px;
+    padding:14px;
+    border:0;
+    border-radius:10px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    font-weight:700;
+    font-size:16px;
+    box-shadow:0 8px 20px rgba(37,99,235,0.25);
+    transition:0.2s;
+}
+
+.login-btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 12px 25px rgba(37,99,235,0.32);
+}
+
+
+/* ==============================
+   HIDE PUBLIC ABOUT/CONTACT
+   ON LOGIN & DASHBOARD
+   ============================== */
+
+#loginPage[style*="display: flex"] ~ #about,
+#dashboard[style*="display: block"] ~ #about{
+    display:none !important;
+}
+
+/* Hide public About section when Dashboard is open */
+#dashboard[style*="display: block"] ~ #about{
+    display:none !important;
+}
+
 .form-actions{display:flex;gap:10px;margin-top:20px}
 .edit-btn{background:#f59e0b;color:white;border:0;padding:8px 12px;border-radius:6px}
 .modal{display:none;position:fixed;inset:0;background:#0008;z-index:1000;padding:20px;overflow:auto}
 .modal-box{background:white;max-width:600px;margin:50px auto;padding:30px;border-radius:15px}
 .modal-box h2{margin-top:0}
 
-@media(max-width:850px){
-.brand{display:none}.login-container{grid-template-columns:1fr}
-.sidebar{width:70px}.logo{font-size:0}.logo span{font-size:20px}
-.menu{font-size:0;text-align:center}.main{margin-left:70px}
-.cards{grid-template-columns:1fr 1fr}.grid-2,.grid-3{grid-template-columns:1fr}
-.item-row,.purchase-item-row{grid-template-columns:1fr}
+/* =========================================
+   HAMBURGER MENU
+   ========================================= */
+
+.mobile-menu-btn{
+    display:none;
+    border:0;
+    background:#2563eb;
+    color:white;
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    font-size:22px;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+@media (max-width:850px){
+
+    #superAdminPanel .topbar{
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        gap:12px;
+    }
+
+    #superAdminPanel .topbar > b{
+        flex:1;
+    }
+
+    #superAdminPanel .topbar > div{
+        margin-left:auto;
+    }
+}
+
+.mobile-sidebar-overlay{
+    display:none;
+}
+
+@media (max-width:850px){
+    .mobile-sidebar-overlay{
+        position:fixed;
+        inset:0;
+        background:rgba(15,23,42,0.45);
+        z-index:2999;
+    }
+
+    .mobile-sidebar-overlay.show{
+        display:block;
+    }
+}
+
+@media (max-width:850px){
+
+    .mobile-menu-btn{
+        display:flex;
+    }
+
+}
+
+/* =========================================
+   COMPLETE MOBILE RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 850px){
+
+    /* ---------- PUBLIC HOME ---------- */
+
+    #publicHome{
+        width:100%;
+        overflow-x:hidden;
+    }
+
+    #publicHome header{
+        padding:15px !important;
+    }
+
+    #publicHome header nav{
+        gap:10px !important;
+        font-size:12px;
+    }
+
+
+    /* ---------- LOGIN ---------- */
+
+    .brand{
+        display:none;
+    }
+
+    .login-container{
+        width:100%;
+        max-width:500px;
+        min-height:auto;
+        grid-template-columns:1fr;
+        border-radius:18px;
+    }
+
+    .login-box{
+        padding:30px 22px;
+    }
+
+    .login-box h2{
+        font-size:26px;
+    }
+
+
+    /* ---------- DASHBOARD ---------- */
+
+    #dashboard{
+        width:100%;
+        min-height:100vh;
+        overflow-x:hidden;
+    }
+
+
+    /* ---------- SIDEBAR ---------- */
+
+    #dashboard > .sidebar,
+    #superAdminPanel .sidebar{
+
+        width:270px;
+        height:100vh;
+
+        position:fixed;
+        left:-290px;
+        top:0;
+
+        z-index:3000;
+
+        padding:20px 15px;
+
+        box-sizing:border-box;
+
+        transition:left .25s ease;
+
+        overflow-y:auto;
+    }
+
+
+    /* Sidebar OPEN */
+
+    #dashboard > .sidebar.mobile-open,
+    #superAdminPanel .sidebar.mobile-open{
+        left:0;
+    }
+
+
+    /* ---------- MAIN AREA ---------- */
+
+    #dashboard > .main{
+        width:100%;
+        margin-left:0;
+        min-height:100vh;
+    }
+
+
+    /* ---------- TOPBAR ---------- */
+
+    .topbar{
+        height:auto;
+        min-height:65px;
+
+        padding:12px 15px;
+
+        gap:10px;
+
+        box-sizing:border-box;
+    }
+
+    .topbar > b{
+        font-size:15px;
+    }
+
+    .topbar > div{
+        display:flex;
+        align-items:center;
+        gap:8px;
+    }
+
+    .topbar span{
+        font-size:12px;
+        margin-right:0 !important;
+    }
+
+    .logout{
+        padding:8px 11px;
+        font-size:12px;
+    }
+
+
+    /* ---------- CONTENT ---------- */
+
+    .content{
+        width:100%;
+        padding:18px 15px;
+        box-sizing:border-box;
+        overflow-x:hidden;
+    }
+
+
+    /* ---------- PAGE TITLE ---------- */
+
+    .page-title{
+        margin-bottom:18px;
+    }
+
+    .page-title h1{
+        font-size:23px;
+    }
+
+    .page-title p{
+        font-size:13px;
+    }
+
+
+    /* ---------- DASHBOARD CARDS ---------- */
+
+    .cards{
+        grid-template-columns:1fr !important;
+        gap:12px;
+    }
+
+    .card,
+    .box{
+        width:100%;
+        box-sizing:border-box;
+        padding:17px;
+    }
+
+
+    /* ---------- 2 / 3 COLUMN GRIDS ---------- */
+
+    .grid-2,
+    .grid-3{
+        grid-template-columns:1fr !important;
+    }
+
+
+    /* ---------- FORMS ---------- */
+
+    input,
+    select,
+    textarea{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+    }
+
+
+    /* ---------- BUTTONS ---------- */
+
+    button{
+        max-width:100%;
+    }
+
+
+    /* ---------- BILLING / PURCHASE ROWS ---------- */
+
+    .item-row,
+    .purchase-item-row{
+        grid-template-columns:1fr !important;
+        gap:10px;
+    }
+
+
+    /* ---------- TABLES ---------- */
+
+    .content table{
+        min-width:700px;
+    }
+
+    .content{
+        overflow-x:auto;
+    }
+
+
+    /* ---------- MODALS ---------- */
+
+    .modal{
+        padding:15px !important;
+        box-sizing:border-box;
+    }
+
+    .modal-box{
+        width:100%;
+        max-width:100%;
+        margin:20px auto;
+        padding:20px;
+        box-sizing:border-box;
+    }
+
+
+    /* ---------- SUPER ADMIN ---------- */
+
+    #superAdminPanel{
+        width:100%;
+        overflow-x:hidden;
+    }
+
+    #superAdminPanel .content{
+        padding:18px 15px;
+        overflow-x:auto;
+    }
+
+    #superAdminPanel .cards{
+        grid-template-columns:1fr !important;
+    }
+
+
+    /* ---------- ABOUT / CONTACT ---------- */
+
+    #about{
+        width:100%;
+        box-sizing:border-box;
+        overflow-x:hidden;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE — 600px
+   ========================================= */
+
+@media (max-width:600px){
+
+    .topbar > b{
+        font-size:14px;
+    }
+
+    .page-title h1{
+        font-size:21px;
+    }
+
+    .content{
+        padding:15px 12px;
+    }
+
+    .login-box{
+        padding:25px 18px;
+    }
+
+    .login-box h2{
+        font-size:24px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE — 400px
+   ========================================= */
+
+@media (max-width:400px){
+
+    .topbar{
+        padding:10px;
+    }
+
+    .topbar > b{
+        font-size:13px;
+    }
+
+    .logout{
+        padding:7px 9px;
+        font-size:11px;
+    }
+
+    .content{
+        padding:12px 10px;
+    }
+
 }
 </style>
 </head>
@@ -104,6 +601,12 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
         ">
             Your<span style="color:#2563eb;">Garment</span>
         </div>
+        <button
+    class="home-mobile-menu-btn"
+    type="button"
+    onclick="toggleHomeMobileMenu()">
+    ☰
+</button>
 
         <div style="
             display:flex;
@@ -130,7 +633,7 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
     Our Products
 </span>
 
-   <div style="
+   <div id="productsDropdown" style="
         display:none;
         position:absolute;
         top:100%;
@@ -176,7 +679,7 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
 
 </div>
 
-<a href="#about"
+<a href="#about-content"
    class="nav-link"
    style="text-decoration:none;color:#334155;"
    onmouseover="this.style.color='#2563eb'"
@@ -195,7 +698,7 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
     Contact Us
 </span>
 
-    <div style="
+    <div id="contactDropdown" style="
         display:none;
         position:absolute;
         top:100%;
@@ -315,7 +818,7 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
 ">
 
     <button
-        onclick="openLoginPage()"
+       onclick="openBusinessSelector()"
         style="
             padding:14px 28px;
             border:none;
@@ -330,7 +833,7 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
     </button>
 
     <button
-        onclick="alert('Demo request feature coming soon!')"
+    onclick="openBusinessSelector('demo')"
         style="
             padding:14px 28px;
             border:2px solid #2563eb;
@@ -580,9 +1083,165 @@ td{padding:12px;border-bottom:1px solid #e5e7eb}
 
 </div>
 
+<!-- BUSINESS SELECTOR -->
+
+<div id="businessSelector" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,0.65);
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+">
+
+    <div style="
+        background:white;
+        width:90%;
+        max-width:600px;
+        padding:35px;
+        border-radius:16px;
+        box-shadow:0 20px 50px rgba(0,0,0,0.25);
+        text-align:center;
+    ">
+
+        <h2 style="
+            font-size:28px;
+            color:#0f172a;
+            margin-bottom:10px;
+        ">
+            Select Your Business
+        </h2>
+
+        <p style="
+            color:#64748b;
+            margin-bottom:25px;
+        ">
+            Choose the management system you want to start with.
+        </p>
+
+        <div style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:15px;
+        ">
+
+            <button
+    id="retailBusinessButton"
+    onclick="openRetailTrial()"
+                style="
+                    padding:22px;
+                    border:1px solid #dbeafe;
+                    border-radius:12px;
+                    background:#eff6ff;
+                    cursor:pointer;
+                    font-size:16px;
+                    font-weight:600;
+                    color:#1e40af;
+                ">
+                🏪<br>
+                Retail Management System
+            </button>
+
+            <button
+                onclick="showComingSoon()"
+                style="
+                    padding:22px;
+                    border:1px solid #e2e8f0;
+                    border-radius:12px;
+                    background:#f8fafc;
+                    cursor:pointer;
+                    font-size:16px;
+                    font-weight:600;
+                    color:#334155;
+                ">
+                🍽️<br>
+                Restaurant Management System
+            </button>
+
+            <button
+                onclick="showComingSoon()"
+                style="
+                    padding:22px;
+                    border:1px solid #e2e8f0;
+                    border-radius:12px;
+                    background:#f8fafc;
+                    cursor:pointer;
+                    font-size:16px;
+                    font-weight:600;
+                    color:#334155;
+                ">
+                🏫<br>
+                School Management System
+            </button>
+
+            <button
+                onclick="showComingSoon()"
+                style="
+                    padding:22px;
+                    border:1px solid #e2e8f0;
+                    border-radius:12px;
+                    background:#f8fafc;
+                    cursor:pointer;
+                    font-size:16px;
+                    font-weight:600;
+                    color:#334155;
+                ">
+                👥<br>
+                HR Management System
+            </button>
+
+        </div>
+
+        <button
+            onclick="document.getElementById('businessSelector').style.display='none'; document.getElementById('publicHome').style.display='block';"
+            style="
+                margin-top:25px;
+                border:none;
+                background:none;
+                color:#64748b;
+                cursor:pointer;
+                font-size:14px;
+            ">
+            ← Back
+        </button>
+
+    </div>
+
+</div>
+
 <!-- LOGIN -->
 
 <script>
+
+function openBusinessSelector(mode = "trial") {
+
+    document.getElementById("publicHome").style.display = "none";
+    document.getElementById("businessSelector").style.display = "flex";
+
+    const retailButton = document.getElementById("retailBusinessButton");
+
+    if(mode === "demo"){
+        retailButton.setAttribute("onclick", "openRetailDemo()");
+    }else{
+        retailButton.setAttribute("onclick", "openRetailTrial()");
+    }
+}
+
+function openRetailTrial() {
+    window.location.href = "retail/retail.html?trial=1";
+}
+
+function openRetailDemo() {
+    window.location.href = "retail/retail.html?demo=1";
+}
+
+function showComingSoon() {
+
+    alert("Coming Soon!");
+
+}
+
 function openLoginPage() {
 
     document.getElementById("publicHome").style.display = "none";
@@ -622,46 +1281,148 @@ Select Login Type
 </div>
 
 <div style="
-display:flex;
-gap:12px;
 margin:25px 0;
 ">
 
+<div style="
+font-size:18px;
+font-weight:800;
+margin-bottom:15px;
+">
+Business Login
+</div>
+
+<div id="businessLoginOptions" style="
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+">
+
+<!-- RETAIL -->
 <button
 type="button"
-onclick="selectLoginType('shop')"
+onclick="selectLoginType('shop'); showRetailOnly()"
 style="
-flex:1;
-padding:15px;
-border:0;
-border-radius:10px;
-background:#2563eb;
-color:white;
-font-weight:700;
+padding:22px 15px;
+border:1px solid #dbeafe;
+border-radius:14px;
+background:#eff6ff;
+color:#1d4ed8;
+font-weight:800;
+font-size:16px;
 cursor:pointer;
 ">
-🏪 Shop Login
+🏪<br>
+Retail Management system
 </button>
+
+<!-- RESTAURANT -->
+<button
+type="button"
+onclick="showComingSoon()"
+style="
+padding:22px 15px;
+border:1px solid #dcfce7;
+border-radius:14px;
+background:#f0fdf4;
+color:#15803d;
+font-weight:800;
+font-size:16px;
+cursor:pointer;
+">
+🍽️<br>
+Restaurant Management system
+</button>
+
+<!-- SCHOOL -->
+<button
+type="button"
+onclick="showComingSoon()"
+style="
+padding:22px 15px;
+border:1px solid #fef3c7;
+border-radius:14px;
+background:#fffbeb;
+color:#b45309;
+font-weight:800;
+font-size:16px;
+cursor:pointer;
+">
+🏫<br>
+School Management system
+</button>
+
+<!-- HR -->
+<button
+type="button"
+onclick="showComingSoon()"
+style="
+padding:22px 15px;
+border:1px solid #f3e8ff;
+border-radius:14px;
+background:#faf5ff;
+color:#7e22ce;
+font-weight:800;
+font-size:16px;
+cursor:pointer;
+">
+👥<br>
+HR Management system
+</button>
+
+</div>
+
+
+<!-- SUPER ADMIN -->
+<div style="
+margin-top:20px;
+padding-top:20px;
+border-top:1px solid #e5e7eb;
+">
 
 <button
 type="button"
 onclick="selectLoginType('admin')"
 style="
-flex:1;
-padding:15px;
+width:100%;
+padding:17px;
 border:0;
-border-radius:10px;
+border-radius:12px;
 background:#111827;
 color:white;
-font-weight:700;
+font-weight:800;
+font-size:16px;
 cursor:pointer;
 ">
-🔐 Admin Login
+🔐 Super Admin Login
 </button>
 
 </div>
 
+</div>
+
 <div id="loginForm" style="display:none;">
+
+<button
+    type="button"
+    onclick="changeBusiness()"
+    style="
+        align-self:flex-start;
+        margin-bottom:20px;
+        padding:8px 14px;
+        border:1px solid #dbe2ea;
+        border-radius:8px;
+       background:linear-gradient(135deg,#eff6ff,#dbeafe);
+       color:#2563eb;
+       border:1px solid #93c5fd;
+       box-shadow:0 4px 12px rgba(37,99,235,0.12);
+       transition:all 0.2s ease;
+        font-size:13px;
+        font-weight:600;
+        cursor:pointer;
+    ">
+    ← Change Business
+</button>
 
 <div id="loginTypeTitle"
 style="
@@ -928,8 +1689,16 @@ font-size:14px;
 
     <div class="main">
 
-        <div class="topbar">
-            <b>YourGarment — Super Admin</b>
+       <div class="topbar">
+
+<button
+    class="mobile-menu-btn"
+    type="button"
+    onclick="toggleMobileSidebar(this)"
+    <span>☰</span>
+</button>
+
+<b>RajSun Technologies — Super Admin</b>
 
             <div>
                 <span style="margin-right:15px;font-weight:bold">
@@ -1238,7 +2007,15 @@ font-size:14px;
 <div class="main">
 
 <div class="topbar">
-<b>YourGarment</b>
+
+<button
+    class="mobile-menu-btn"
+    type="button"
+    onclick="toggleMobileSidebar(this)"
+    <span>☰</span>
+</button>
+
+<b>RajSun Technologies</b>
 
 <div>
 <span id="shopName" style="margin-right:15px;font-weight:bold">Shop</span>
@@ -1924,9 +2701,10 @@ font-size:14px;
 </div>
 </div>
 
+
 <script>
 
-    function toggleProducts(event){
+function toggleProducts(event){
     event.stopPropagation();
 
     const dropdown = event.currentTarget.children[1];
@@ -1937,6 +2715,37 @@ font-size:14px;
         dropdown.style.display = "block";
     }
 }
+
+document.addEventListener("click", function(event){
+
+    const productsDropdown = document.getElementById("productsDropdown");
+    const contactDropdown = document.getElementById("contactDropdown");
+
+    const productsButton = productsDropdown?.parentElement;
+    const contactButton = contactDropdown?.parentElement;
+
+    if(productsButton && !productsButton.contains(event.target)){
+        productsDropdown.style.display = "none";
+    }
+
+    if(contactButton && !contactButton.contains(event.target)){
+        contactDropdown.style.display = "none";
+    }
+
+});
+
+document.addEventListener("click", function(){
+    const dropdowns = document.querySelectorAll("div[style*='position:absolute']");
+
+    dropdowns.forEach(function(dropdown){
+        if(dropdown.innerText.includes("Retail Management") ||
+           dropdown.innerText.includes("Restaurant Management") ||
+           dropdown.innerText.includes("School Management") ||
+           dropdown.innerText.includes("HR Management")){
+            dropdown.style.display = "none";
+        }
+    });
+});
 
     function toggleProductMenu() {
     const menu = document.getElementById("productMenu");
@@ -1963,7 +2772,14 @@ const SUPABASE_KEY =
 const supabaseClient =
 supabase.createClient(
 SUPABASE_URL,
-SUPABASE_KEY
+SUPABASE_KEY,
+{
+    auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+    }
+}
 );
 
 
@@ -2006,6 +2822,49 @@ LOGIN
 ============================== */
 
 let loginType = "";
+
+function showRetailOnly(){
+
+    const options =
+        document.getElementById("businessLoginOptions");
+
+    if(options){
+        options.style.display = "block";
+    }
+
+    const buttons = options.querySelectorAll("button");
+
+    buttons.forEach((button, index) => {
+
+        if(index !== 0){
+            button.style.display = "none";
+        }
+
+    });
+}
+
+function changeBusiness(){
+
+    loginType = "";
+
+    document.getElementById("loginForm").style.display = "none";
+
+    const options =
+        document.getElementById("businessLoginOptions");
+
+    if(options){
+
+        options.style.display = "grid";
+
+        const buttons = options.querySelectorAll("button");
+
+        buttons.forEach(button => {
+            button.style.display = "block";
+        });
+    }
+
+    document.getElementById("message").style.display = "none";
+}
 
 function selectLoginType(type){
 
@@ -2721,6 +3580,7 @@ if(
     return;
 }
 
+document.getElementById("publicHome").style.display = "none";
 document.getElementById("loginPage").style.display = "none";
 document.getElementById("dashboard").style.display = "block";
 document.getElementById("dashboardPage").style.display = "block";
@@ -2752,7 +3612,6 @@ async function checkSession(){
         await loadDashboard(session.user.id);
 
     }
-
 }
 
 
@@ -3846,6 +4705,144 @@ padding:10px;
     color:#2563eb !important;
     background:#eff6ff !important;
 }
+
+/* ==============================
+   HOMEPAGE MOBILE RESPONSIVE
+   ============================== */
+
+@media (max-width: 850px){
+
+    #publicHome{
+        width:100%;
+        min-height:100vh;
+        overflow-x:hidden;
+    }
+
+    #publicHome header{
+        width:100%;
+        padding:14px 16px !important;
+        box-sizing:border-box;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
+
+    #publicHome header nav{
+        display:flex;
+        align-items:center;
+        gap:8px !important;
+        flex-wrap:wrap;
+    }
+
+    #publicHome header nav button{
+        padding:8px 11px !important;
+        font-size:12px !important;
+    }
+
+    #publicHome .hero,
+    #publicHome section{
+        max-width:100%;
+        box-sizing:border-box;
+    }
+
+    #publicHome h1{
+        font-size:36px !important;
+        line-height:1.15 !important;
+    }
+
+    #publicHome h2{
+        font-size:28px !important;
+    }
+
+    #publicHome p{
+        max-width:100%;
+    }
+
+    #publicHome .cards{
+        grid-template-columns:1fr !important;
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    #publicHome .card{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+}
+
+@media (max-width:600px){
+
+    #publicHome header{
+        padding:12px !important;
+    }
+
+    #publicHome header nav{
+        gap:6px !important;
+    }
+
+    #publicHome header nav button{
+        padding:7px 9px !important;
+        font-size:11px !important;
+    }
+
+    #publicHome h1{
+        font-size:30px !important;
+    }
+
+    #publicHome h2{
+        font-size:24px !important;
+    }
+
+    #publicHome .hero{
+        padding:40px 16px !important;
+    }
+
+}
+
+/* =========================================
+   HOME PAGE MOBILE NAVBAR
+   ========================================= */
+
+.home-mobile-menu-btn{
+    display:none;
+    border:0;
+    background:#2563eb;
+    color:white;
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    font-size:23px;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+}
+
+/* MOBILE */
+@media (max-width:850px){
+
+    #publicHome header{
+        padding:14px 16px !important;
+        min-height:68px;
+        box-sizing:border-box;
+    }
+
+    #publicHome header > div:first-child{
+        font-size:24px !important;
+    }
+
+    .home-mobile-menu-btn{
+        display:flex;
+        margin-left:auto;
+    }
+
+    /* Hide desktop navigation */
+    #publicHome header > div:nth-of-type(2){
+        display:none !important;
+    }
+
+}
+   
 
 </style>
 
@@ -5041,6 +6038,7 @@ async function deleteShopPermanently(){
 }
 
 function showAdminPage(page,button){
+        closeMobileSidebar();
 
     /* सभी Admin pages hide */
     const adminPages = [
@@ -5139,6 +6137,8 @@ else if(page === "users"){
     }
 }
 function showPage(page,button){
+
+    closeMobileSidebar();
 
 const pages=[
 "dashboardPage",
@@ -5391,6 +6391,13 @@ await supabaseClient.auth.signOut();
 location.reload();
 }
 
+supabaseClient.auth.onAuthStateChange((event, session) => {
+
+    if(event === "SIGNED_IN" && session && session.user){
+        currentUser = session.user;
+    }
+
+});
 
 checkSession();
 
@@ -5401,6 +6408,91 @@ function showRetailDetails() {
         behavior: "smooth"
     });
 }
+
+function toggleMobileSidebar(){
+
+    const adminPanel =
+        document.getElementById("superAdminPanel");
+
+    let sidebar = null;
+
+    /* Super Admin sidebar */
+    if(
+        adminPanel &&
+        adminPanel.style.display !== "none"
+    ){
+        sidebar = adminPanel.querySelector(".sidebar");
+    }
+
+    /* Shop sidebar */
+    if(!sidebar){
+
+        const dashboard =
+            document.getElementById("dashboard");
+
+        if(dashboard){
+
+            const sidebars =
+                dashboard.querySelectorAll(".sidebar");
+
+            if(sidebars.length > 1){
+                sidebar = sidebars[1];
+            }
+
+        }
+    }
+
+    if(!sidebar) return;
+
+    sidebar.classList.toggle("mobile-open");
+
+  
+
+    let overlay =
+        document.getElementById("mobileSidebarOverlay");
+
+    if(!overlay){
+
+        overlay =
+            document.createElement("div");
+
+        overlay.id =
+            "mobileSidebarOverlay";
+
+        overlay.className =
+            "mobile-sidebar-overlay";
+
+        overlay.onclick =
+            closeMobileSidebar;
+
+        document.body.appendChild(overlay);
+    }
+
+    overlay.classList.toggle(
+        "show",
+        sidebar.classList.contains("mobile-open")
+    );
+}
+
+
+
+function closeMobileSidebar(){
+
+    document.querySelectorAll(".sidebar").forEach(
+        sidebar => {
+            sidebar.classList.remove("mobile-open");
+        }
+    );
+
+    const overlay =
+        document.getElementById("mobileSidebarOverlay");
+
+    if(overlay){
+        overlay.classList.remove("show");
+    }
+}
+
+
 
 </script>
 
@@ -5419,45 +6511,67 @@ function showRetailDetails() {
     ">
 
         <!-- ABOUT -->
-        <div>
+<div id="about-content">
+    <h2 style="
+        font-size:32px;
+        color:#0f172a;
+        margin-bottom:25px;
+    ">
+        About RajSun Technologies
+    </h2>
 
-            <h2 style="
-                font-size:32px;
-                color:#0f172a;
-                margin-bottom:20px;
-            ">
-                About YourGarment
-            </h2>
+    <div style="
+        font-size:16px;
+        line-height:1.8;
+        color:#475569;
+    ">
 
-            <p style="
-                font-size:16px;
-                line-height:1.8;
-                color:#475569;
-            ">
-                YourGarment is a modern business management
-                software designed to help retail businesses
-                manage their daily operations easily and efficiently.
-            </p>
+        <p style="margin-bottom:22px;">
+            <strong style="color:#0f172a;">
+                Retail Management System
+            </strong><br>
 
-            <p style="
-                font-size:16px;
-                line-height:1.8;
-                color:#475569;
-            ">
-                Manage billing, sales, inventory, purchase,
-                suppliers and reports from one simple platform.
-            </p>
+            Retail Management System helps businesses
+            manage billing, sales, inventory, purchases and suppliers
+            with ease. It brings essential retail operations together
+            in one simple and organized platform.
+        </p>
 
-            <p style="
-                font-size:16px;
-                line-height:1.8;
-                color:#475569;
-            ">
-                Our goal is to reduce manual work, save time and
-                help businesses manage their operations more efficiently.
-            </p>
+        <p style="margin-bottom:22px;">
+            <strong style="color:#0f172a;">
+                School Management System
+            </strong><br>
 
-        </div>
+            Our School Management System helps schools manage students,
+            teachers, attendance, fees and academic activities efficiently.
+            It provides a simple way to organize everyday school operations
+            in one place.
+        </p>
+
+        <p style="margin-bottom:22px;">
+            <strong style="color:#0f172a;">
+                HR Management System
+            </strong><br>
+
+            Our HR Management System helps organizations manage employees,
+            attendance, leave, payroll and employee records with ease.
+            It simplifies everyday HR operations and keeps important
+            employee information organized.
+        </p>
+
+        <p style="margin-bottom:0;">
+            <strong style="color:#0f172a;">
+                Restaurant Management System
+            </strong><br>
+
+            Our Restaurant Management System helps restaurants manage
+            orders, billing, menu, inventory and daily operations efficiently.
+            It brings essential restaurant activities together in one simple
+            and convenient platform.
+        </p>
+
+    </div>
+</div>
 
         <!-- CONTACT -->
         <div id="contact">
@@ -5503,7 +6617,7 @@ function showRetailDetails() {
 
                 <p>
                     📍
-                    YourGarment Business Office
+                    RajSun Technologies Business Office
                 </p>
 
                 <p>
